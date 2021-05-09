@@ -1,15 +1,20 @@
 package domain.transporte;
 
 public class Estandar implements StrategyEnvio{
-    private Integer tarifaDeEnvioLocal;
-    private Integer tarifaDeEnvioADistancia;
+    private double tarifaDeEnvioLocal;
+    private double tarifaDeEnvioADistancia;
+
+    public Estandar(double tarifaDeEnvioLocal,double tarifaDeEnvioADistancia){
+        this.tarifaDeEnvioLocal = tarifaDeEnvioLocal;
+        this.tarifaDeEnvioADistancia = tarifaDeEnvioADistancia;
+    }
 
     @Override
-    public Integer calcularCosto(TipoDeEnvio tipoDeEnvio,Paquete paquete){
+    public double calcularCosto(TipoDeEnvio tipoDeEnvio, Paquete paquete){
         return paquete.getPeso()*this.costoPorTipoDeEnvio(tipoDeEnvio);
     }
 
-    public Integer costoPorTipoDeEnvio(TipoDeEnvio tipoDeEnvio){
+    public double costoPorTipoDeEnvio(TipoDeEnvio tipoDeEnvio){
         if(tipoDeEnvio == TipoDeEnvio.LARGADISTANCIA)
             return tarifaDeEnvioADistancia;
         else return tarifaDeEnvioLocal;

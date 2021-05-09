@@ -1,9 +1,13 @@
 package domain.transporte;
 
 public class Paquete {
-    private Integer peso;
+    private double peso;
 
-    public Integer getPeso() {
+    public Paquete(Integer peso){
+        this.peso = peso;
+    }
+
+    public double getPeso() {
         return peso;
     }
 
